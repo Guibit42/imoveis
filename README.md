@@ -9,24 +9,24 @@ Site mobile-first para anunciar 3 apartamentos com QR Code, WhatsApp e agendamen
 ```
 imoveis/
   index.html              ← Home com os 3 imóveis
-  601.html                ← Landing Cobertura 601 (QR Code → esta página)
-  601-detalhes.html       ← Detalhes completos da Cobertura 601
-  202.html                ← Landing Área Privativa 202
-  202-detalhes.html       ← Detalhes completos da Área Privativa 202
-  402.html                ← Landing Tipo 402
-  402-detalhes.html       ← Detalhes completos do Tipo 402
+  601.html                ← Cobertura 601 (fotos + info + outras unidades + WhatsApp)
+  202.html                ← Área Privativa 202
+  402.html                ← Tipo 402
   style.css               ← Estilo compartilhado (mobile-first)
+  qrcodes/                ← QR Codes prontos para imprimir
 ```
 
 ## 🚀 Fluxo do Usuário
 
 ```
-QR Code na janela → Página do imóvel (2 botões)
-                      ├─ [Ver Informações] → Página de detalhes
-                      │                       ├─ Fotos, dados, localização
-                      │                       ├─ [Falar no WhatsApp]
-                      │                       └─ [Agendar Visita] → Google Agenda
-                      └─ [Falar no WhatsApp] → Conversa direta no WhatsApp
+QR Code na janela → Página completa do imóvel
+                      ├─ Foto principal
+                      ├─ Galeria de imagens
+                      ├─ Dados e diferenciais
+                      ├─ Localização
+                      ├─ Ver outras unidades
+                      ├─ [Falar no WhatsApp]
+                      └─ [Agendar Visita] → Google Agenda
 ```
 
 ---

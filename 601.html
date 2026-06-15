@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-    <!-- Hero -->
+    <!-- Foto principal -->
     <div class="hero">
       <div class="hero-placeholder">
         <span class="icon">🏢</span>
@@ -16,18 +16,90 @@
       </div>
     </div>
 
+    <!-- Galeria -->
+    <div class="gallery">
+      <div class="gallery-item">📸 Foto 2</div>
+      <div class="gallery-item">📸 Foto 3</div>
+      <div class="gallery-item">📸 Foto 4</div>
+    </div>
+
+    <!-- Título e preço -->
     <span class="badge">Cobertura</span>
     <h1 class="title">Apartamento 601</h1>
     <p class="price">R$ 800.000</p>
 
-    <a href="601-detalhes.html" class="btn btn-primary">
-      <span class="btn-icon">📋</span> Ver Informações
-    </a>
-    <a href="https://wa.me/5531987733252?text=Olá!%20Tenho%20interesse%20na%20Cobertura%20601%20(R$%20800.000)" class="btn btn-whatsapp">
-      <span class="btn-icon">💬</span> Falar no WhatsApp
-    </a>
+    <!-- Detalhes do imóvel -->
+    <div class="section">
+      <h3 class="section-title">📊 Informações do Imóvel</h3>
+      <table class="details-table">
+        <tr><td>Tipo</td><td>Cobertura</td></tr>
+        <tr><td>Número</td><td>601</td></tr>
+        <tr><td>Vagas de garagem</td><td>2 vagas cobertas</td></tr>
+        <tr><td>Valor</td><td>R$ 800.000,00</td></tr>
+      </table>
+    </div>
 
-    <p class="footer">Aponte a câmera e acesse as informações do imóvel</p>
+    <!-- Diferenciais -->
+    <div class="section">
+      <h3 class="section-title">✨ Diferenciais</h3>
+      <ul class="features">
+        <li><span class="dot"></span> Cobertura com vista panorâmica</li>
+        <li><span class="dot"></span> 2 vagas de garagem cobertas</li>
+        <li><span class="dot"></span> Acabamento de alto padrão</li>
+        <li><span class="dot"></span> Área de lazer completa</li>
+      </ul>
+    </div>
+
+    <!-- Localização -->
+    <div class="section">
+      <h3 class="section-title">🗺️ Localização</h3>
+      <div class="map">📍 Mapa será adicionado aqui</div>
+    </div>
+
+    <!-- Ver outras unidades -->
+    <div style="margin-top: 32px;">
+      <h3 class="other-units-title">🏠 Ver outras unidades</h3>
+
+      <a href="202.html" class="other-unit">
+        <div class="other-unit-img">📸</div>
+        <div class="other-unit-info">
+          <div class="other-unit-name">Área Privativa 202</div>
+          <div class="other-unit-tags">2 vagas (1 coberta + 1 descoberta)</div>
+          <div class="other-unit-price">R$ 465.600</div>
+        </div>
+        <span class="other-unit-arrow">›</span>
+      </a>
+
+      <a href="402.html" class="other-unit">
+        <div class="other-unit-img">📸</div>
+        <div class="other-unit-info">
+          <div class="other-unit-name">Tipo 402</div>
+          <div class="other-unit-tags">1 vaga coberta</div>
+          <div class="other-unit-price">R$ 435.800</div>
+        </div>
+        <span class="other-unit-arrow">›</span>
+      </a>
+    </div>
+
+    <!-- WhatsApp -->
+    <div style="margin-top: 24px;">
+      <a href="https://wa.me/5531987733252?text=Olá!%20Tenho%20interesse%20na%20Cobertura%20601%20(R$%20800.000)" class="btn btn-whatsapp">
+        <span class="btn-icon">💬</span> Falar no WhatsApp
+      </a>
+    </div>
+
+    <!-- Agendar Visita -->
+    <div style="margin-top: 20px;">
+      <div class="separator">ou</div>
+      <p class="schedule-info">
+        Agende uma visita e conheça a Cobertura 601 pessoalmente.
+      </p>
+      <a href="#" class="btn btn-schedule" id="btnSchedule">
+        <span class="btn-icon">📅</span> Agendar Visita
+      </a>
+    </div>
+
+    <p class="footer">© 2026 — Todos os direitos reservados</p>
   </div>
 </body>
 </html>
