@@ -2,104 +2,130 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Cobertura 601 — R$ 800.000</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cobertura 601 — Residencial Dona Senhorinha</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #FAFAF8; --surface: #FFFFFF; --text: #1A1A1A; --text-muted: #8C8C8C;
+      --accent: #B8944C; --accent-light: #F5ECD7; --border: #EBEBE5;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 60px; }
+    .back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); text-decoration: none; margin-bottom: 32px; transition: color .3s; }
+    .back:hover { color: var(--text); }
+    .hero { width: 100%; aspect-ratio: 16/10; background: linear-gradient(135deg, #F0EDE6 0%, #E8E4DA 40%, #DCD6C8 100%); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+    .hero span { font-size: 48px; opacity: 0.5; }
+    .detail-tag { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 5px 12px; border: 1px solid rgba(184,148,76,0.2); margin-bottom: 16px; }
+    .detail-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px,5vw,38px); font-weight: 500; letter-spacing: -0.5px; margin-bottom: 4px; }
+    .detail-price { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 500; color: var(--accent); letter-spacing: -0.3px; margin-bottom: 32px; }
+    .section { background: var(--surface); border: 1px solid var(--border); padding: 28px; margin-bottom: 16px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; letter-spacing: -0.3px; margin-bottom: 20px; }
+    .table { width: 100%; border-collapse: collapse; }
+    .table td { padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .table td:first-child { color: var(--text-muted); width: 40%; }
+    .table td:last-child { font-weight: 500; }
+    .table tr:last-child td { border-bottom: none; }
+    .features { list-style: none; display: grid; gap: 10px; }
+    .features li { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+    .features li::before { content: '—'; color: var(--accent); font-weight: 300; }
+    .address { text-align: center; padding: 8px 0; }
+    .address p { font-size: 14px; color: var(--text); }
+    .other-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; text-align: center; margin-bottom: 16px; }
+    .other-unit { display: flex; gap: 12px; background: var(--surface); border: 1px solid var(--border); padding: 16px; align-items: center; text-decoration: none; color: inherit; transition: border-color .3s; }
+    .other-unit + .other-unit { margin-top: 8px; }
+    .other-unit:hover { border-color: var(--accent); }
+    .other-unit-img { width: 72px; height: 54px; background: linear-gradient(135deg, #F0EDE6, #E8E4DA); flex-shrink: 0; }
+    .other-unit-info { flex: 1; min-width: 0; }
+    .other-unit-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; }
+    .other-unit-detail { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .other-unit-price { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500; color: var(--accent); margin-top: 2px; }
+    .other-unit-arrow { font-size: 18px; color: var(--text-muted); flex-shrink: 0; }
+    .btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px 20px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; text-align: center; text-decoration: none; cursor: pointer; transition: all .3s; border: none; }
+    .btn-whatsapp { background: transparent; color: #1C8C42; border: 1px solid rgba(28,140,66,0.3); }
+    .btn-whatsapp:hover { background: rgba(28,140,66,0.06); border-color: #1C8C42; }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--text); }
+    .separator { display: flex; align-items: center; gap: 12px; margin: 24px 0; font-size: 13px; color: var(--text-muted); }
+    .separator::before, .separator::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .schedule-text { font-size: 14px; color: var(--text-muted); margin-bottom: 12px; }
+    .mt-32 { margin-top: 32px; } .mt-24 { margin-top: 24px; } .mt-20 { margin-top: 20px; }
+    @media (max-width: 500px) { .container { padding: 24px 16px 40px; } .section { padding: 20px; } }
+  </style>
 </head>
 <body>
   <div class="container">
-    <!-- Foto principal -->
-    <div class="hero">
-      <div class="hero-placeholder">
-        <span class="icon">🏢</span>
-        <span>Foto da Cobertura 601</span>
-      </div>
-    </div>
+    <a href="index.html" class="back">← Voltar</a>
+    <div class="hero"><span>🏢</span></div>
+    <span class="detail-tag">Cobertura</span>
+    <h1 class="detail-title">Apartamento 601</h1>
+    <p class="detail-price">R$ 850.000</p>
 
-    <!-- Galeria -->
-    <div class="gallery">
-      <div class="gallery-item">📸 Foto 2</div>
-      <div class="gallery-item">📸 Foto 3</div>
-      <div class="gallery-item">📸 Foto 4</div>
-    </div>
-
-    <!-- Título e preço -->
-    <span class="badge">Cobertura</span>
-    <h1 class="title">Apartamento 601</h1>
-    <p class="price">R$ 800.000</p>
-
-    <!-- Detalhes do imóvel -->
     <div class="section">
-      <h3 class="section-title">📊 Informações do Imóvel</h3>
-      <table class="details-table">
+      <h2 class="section-title">Informações do Imóvel</h2>
+      <table class="table">
         <tr><td>Tipo</td><td>Cobertura</td></tr>
         <tr><td>Número</td><td>601</td></tr>
         <tr><td>Vagas de garagem</td><td>2 vagas cobertas</td></tr>
-        <tr><td>Valor</td><td>R$ 800.000,00</td></tr>
+        <tr><td>Valor</td><td>R$ 850.000,00</td></tr>
       </table>
     </div>
 
-    <!-- Diferenciais -->
     <div class="section">
-      <h3 class="section-title">✨ Diferenciais</h3>
+      <h2 class="section-title">Diferenciais</h2>
       <ul class="features">
-        <li><span class="dot"></span> Cobertura com vista panorâmica</li>
-        <li><span class="dot"></span> 2 vagas de garagem cobertas</li>
-        <li><span class="dot"></span> Acabamento de alto padrão</li>
-        <li><span class="dot"></span> Área de lazer completa</li>
+        <li>Cobertura com vista panorâmica</li>
+        <li>2 vagas de garagem cobertas</li>
+        <li>Acabamento de alto padrão</li>
+        <li>Área de lazer completa</li>
       </ul>
     </div>
 
-    <!-- Localização -->
     <div class="section">
-      <h3 class="section-title">🗺️ Localização</h3>
-      <div class="map">📍 Mapa será adicionado aqui</div>
+      <h2 class="section-title">Localização</h2>
+      <div class="address">
+        <p><strong>Rua Dona Senhorinha, 227</strong></p>
+        <p>Bairro Boa Vista — Belo Horizonte, MG</p>
+      </div>
     </div>
 
-    <!-- Ver outras unidades -->
-    <div style="margin-top: 32px;">
-      <h3 class="other-units-title">🏠 Ver outras unidades</h3>
-
+    <div class="mt-32">
+      <h2 class="other-title">Ver outras unidades</h2>
       <a href="202.html" class="other-unit">
-        <div class="other-unit-img">📸</div>
+        <div class="other-unit-img"></div>
         <div class="other-unit-info">
           <div class="other-unit-name">Área Privativa 202</div>
-          <div class="other-unit-tags">2 vagas (1 coberta + 1 descoberta)</div>
+          <div class="other-unit-detail">2 vagas (1 coberta + 1 descoberta)</div>
           <div class="other-unit-price">R$ 465.600</div>
         </div>
         <span class="other-unit-arrow">›</span>
       </a>
-
       <a href="402.html" class="other-unit">
-        <div class="other-unit-img">📸</div>
+        <div class="other-unit-img"></div>
         <div class="other-unit-info">
           <div class="other-unit-name">Tipo 402</div>
-          <div class="other-unit-tags">1 vaga coberta</div>
+          <div class="other-unit-detail">1 vaga coberta</div>
           <div class="other-unit-price">R$ 435.800</div>
         </div>
         <span class="other-unit-arrow">›</span>
       </a>
     </div>
 
-    <!-- WhatsApp -->
-    <div style="margin-top: 24px;">
-      <a href="https://wa.me/5531987733252?text=Olá!%20Tenho%20interesse%20na%20Cobertura%20601%20(R$%20800.000)" class="btn btn-whatsapp">
-        <span class="btn-icon">💬</span> Falar no WhatsApp
-      </a>
+    <div class="mt-24">
+      <a href="https://wa.me/5531987733252?text=Olá!%20Tenho%20interesse%20na%20Cobertura%20601%20(R$%20850.000)" class="btn btn-whatsapp">💬 Falar no WhatsApp</a>
     </div>
 
-    <!-- Agendar Visita -->
-    <div style="margin-top: 20px;">
+    <div class="mt-20">
       <div class="separator">ou</div>
-      <p class="schedule-info">
-        Agende uma visita e conheça a Cobertura 601 pessoalmente.
-      </p>
-      <a href="#" class="btn btn-schedule" id="btnSchedule">
-        <span class="btn-icon">📅</span> Agendar Visita
-      </a>
+      <p class="schedule-text">Agende uma visita e conheça a Cobertura 601 pessoalmente.</p>
+      <a href="#" class="btn btn-outline">📅 Agendar Visita</a>
     </div>
 
-    <p class="footer">© 2026 — Todos os direitos reservados</p>
+    <div class="mt-24">
+      <a href="index.html" class="btn btn-outline">← Voltar para página inicial</a>
+    </div>
   </div>
 </body>
 </html>

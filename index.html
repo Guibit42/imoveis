@@ -2,64 +2,372 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Imóveis à Venda</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Residencial Dona Senhorinha — Imóveis à Venda</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #FAFAF8;
+      --surface: #FFFFFF;
+      --text: #1A1A1A;
+      --text-muted: #8C8C8C;
+      --accent: #B8944C;
+      --accent-light: #F5ECD7;
+      --border: #EBEBE5;
+      --radius: 2px;
+      --transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── HEADER ─── */
+    .header {
+      text-align: center;
+      padding: 80px 24px 64px;
+    }
+    .header-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      color: var(--text);
+    }
+    .header-line {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 28px auto;
+    }
+    .header-sub {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-muted);
+      max-width: 420px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ─── LISTINGS GRID ─── */
+    .listings {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    /* ─── CARD ─── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+    }
+
+    .card-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 600;
+      font-style: italic;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .card-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #F0EDE6 0%, #E8E4DA 40%, #DCD6C8 100%);
+      position: relative;
+      overflow: hidden;
+      margin-top: 0;
+    }
+    .card-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.03));
+    }
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body {
+      padding: 28px 28px 32px;
+    }
+    .card-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .card-number a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .card-address {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .card-details {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      text-align: center;
+      padding: 16px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .card-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .card-detail-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .card-detail-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .card-price {
+      font-family: 'Inter', sans-serif;
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 20px;
+      letter-spacing: -0.3px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: none;
+    }
+    .btn-primary {
+      background: #F5F0E8;
+      color: var(--accent);
+      border: 1px solid rgba(184,148,76,0.2);
+    }
+    .btn-primary:hover {
+      background: #EDE4D4;
+      border-color: var(--accent);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--text);
+      background: var(--bg);
+    }
+    .btn-whatsapp {
+      background: transparent;
+      color: #1C8C42;
+      border: 1px solid rgba(28,140,66,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn-whatsapp:hover {
+      background: rgba(28,140,66,0.06);
+      border-color: #1C8C42;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      text-align: center;
+      padding: 48px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 480px) {
+      .header { padding: 48px 20px 40px; }
+      .listings { padding: 0 16px 48px; gap: 24px; }
+      .card-tag { padding: 16px 20px 0; }
+      .card-body { padding: 20px 20px 24px; }
+      .card-actions { flex-direction: column; }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1 class="home-title">🏠 Imóveis à Venda</h1>
-    <p class="home-sub">Apartamentos com estilo, conforto e localização privilegiada</p>
+
+  <!-- ─── HEADER ─── -->
+  <header class="header">
+    <h1>Residencial<br>Dona Senhorinha</h1>
+    <div class="header-line"></div>
+    <p class="header-sub">
+      Apartamentos com assinatura contemporânea no coração do Boa Vista.
+      Espaços pensados para quem valoriza o essencial.
+    </p>
+  </header>
+
+  <!-- ─── LISTINGS ─── -->
+  <section class="listings">
 
     <!-- Cobertura 601 -->
-    <div class="card">
-      <div class="card-hero">
-        <div>📸 Foto da Cobertura</div>
-      </div>
+    <div class="card-wrapper">
+      <div class="card-tag">Cobertura</div>
+      <article class="card">
+        <div class="card-image"></div>
       <div class="card-body">
-        <div class="card-badge">Cobertura</div>
-        <div class="card-title">Apartamento 601</div>
-        <div class="card-price">R$ 800.000</div>
-        <div class="card-actions">
-          <a href="601.html" class="btn btn-primary">📋 Detalhes</a>
-          <a href="https://wa.me/5531987733252?text=Olá!%20Tenho%20interesse%20na%20Cobertura%20601%20(R$%20800.000)" class="btn btn-whatsapp">💬 WhatsApp</a>
+        <h2 class="card-number"><a href="601.html">Apartamento 601</a></h2>
+        <p class="card-address">Rua Dona Senhorinha, 227<br>Boa Vista, Belo Horizonte</p>
+        <div class="card-details">
+          <div class="card-detail">
+            <span class="card-detail-value">2</span>
+            <span class="card-detail-label">Vagas</span>
+          </div>
+          <div class="card-detail">
+            <span class="card-detail-value">Cobertura</span>
+            <span class="card-detail-label">Tipo</span>
+          </div>
+          <div class="card-detail">
+            <span class="card-detail-value">✓</span>
+            <span class="card-detail-label">Vista Surreal!</span>
+          </div>
         </div>
-      </div>
+        <div class="card-price">R$ 850.000</div>
+        <div class="card-actions">
+          <a href="601.html" class="btn btn-primary">Detalhes</a>
+          <a href="https://wa.me/5531987733252?text=Olá!%20Tenho%20interesse%20na%20Cobertura%20601%20(R$%20850.000)" class="btn btn-whatsapp">💬 WhatsApp</a>
+        </div>
+      </article>
     </div>
 
     <!-- Área Privativa 202 -->
-    <div class="card">
-      <div class="card-hero">
-        <div>📸 Foto do Apartamento</div>
-      </div>
+    <div class="card-wrapper">
+      <div class="card-tag">Área Privativa</div>
+      <article class="card">
+        <div class="card-image"></div>
       <div class="card-body">
-        <div class="card-badge">Área Privativa</div>
-        <div class="card-title">Apartamento 202</div>
+        <h2 class="card-number"><a href="202.html">Apartamento 202</a></h2>
+        <p class="card-address">Rua Dona Senhorinha, 227<br>Boa Vista, Belo Horizonte</p>
+        <div class="card-details">
+          <div class="card-detail">
+            <span class="card-detail-value">2</span>
+            <span class="card-detail-label">Vagas</span>
+          </div>
+          <div class="card-detail">
+            <span class="card-detail-value">Área Privativa</span>
+            <span class="card-detail-label">Tipo</span>
+          </div>
+          <div class="card-detail">
+            <span class="card-detail-value">✓</span>
+            <span class="card-detail-label">Varanda</span>
+          </div>
+        </div>
         <div class="card-price">R$ 465.600</div>
         <div class="card-actions">
-          <a href="202.html" class="btn btn-primary">📋 Detalhes</a>
+          <a href="202.html" class="btn btn-primary">Detalhes</a>
           <a href="https://wa.me/5531987733252?text=Olá!%20Tenho%20interesse%20no%20Apartamento%20202%20(R$%20465.600)" class="btn btn-whatsapp">💬 WhatsApp</a>
         </div>
-      </div>
+      </article>
     </div>
 
     <!-- Tipo 402 -->
-    <div class="card">
-      <div class="card-hero">
-        <div>📸 Foto do Apartamento</div>
-      </div>
+    <div class="card-wrapper">
+      <div class="card-tag">Tipo</div>
+      <article class="card">
+        <a href="402.html" style="display:block; text-decoration:none;">
+        <div class="card-image">
+          <img src="fotos-caminho-402/editadas-34/IMG_0162_edit.jpeg" alt="Apartamento 402">
+        </div>
+      </a>
       <div class="card-body">
-        <div class="card-badge">Tipo</div>
-        <div class="card-title">Apartamento 402</div>
+        <h2 class="card-number"><a href="402.html">Apartamento 402</a></h2>
+        <p class="card-address">Rua Dona Senhorinha, 227<br>Boa Vista, Belo Horizonte</p>
+        <div class="card-details">
+          <div class="card-detail">
+            <span class="card-detail-value">1</span>
+            <span class="card-detail-label">Vaga</span>
+          </div>
+          <div class="card-detail">
+            <span class="card-detail-value">Planta</span>
+            <span class="card-detail-label">Tipo</span>
+          </div>
+          <div class="card-detail">
+            <span class="card-detail-value">✓</span>
+            <span class="card-detail-label">Vista</span>
+          </div>
+        </div>
         <div class="card-price">R$ 435.800</div>
         <div class="card-actions">
-          <a href="402.html" class="btn btn-primary">📋 Detalhes</a>
+          <a href="402.html" class="btn btn-primary">Detalhes</a>
           <a href="https://wa.me/5531987733252?text=Olá!%20Tenho%20interesse%20no%20Apartamento%20402%20(R$%20435.800)" class="btn btn-whatsapp">💬 WhatsApp</a>
         </div>
-      </div>
+      </article>
     </div>
 
-    <p class="footer">© 2026 — Todos os direitos reservados</p>
-  </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <p class="footer-text">© 2026 — Residencial Dona Senhorinha</p>
+  </footer>
+
 </body>
 </html>
