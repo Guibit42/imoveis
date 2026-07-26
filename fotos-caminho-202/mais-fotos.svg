@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Mais fotos em breve</title>
+  <desc id="desc">Mensagem informando que mais fotos serão adicionadas em breve.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F0EDE6"/>
+      <stop offset="1" stop-color="#E8E4DA"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <text x="450" y="545" text-anchor="middle" fill="#B8944C" font-family="Georgia, serif" font-size="52">Mais fotos</text>
+  <text x="450" y="615" text-anchor="middle" fill="#8C8C8C" font-family="Arial, sans-serif" font-size="30">em breve</text>
+</svg>
